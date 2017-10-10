@@ -15,6 +15,8 @@ namespace form_submission.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            // you only need to pass a model object to your view if you want to intialize some data on the model instance, eg.
+            // pre-populate edit form values for a specific user
             UserViewModel userModel = new UserViewModel();
             return View(userModel);
         }
@@ -25,6 +27,7 @@ namespace form_submission.Controllers
         {
             if(ModelState.IsValid)
             {
+                // why construct this User object?
                 User newUser = new User{
                     First_name = newUserViewModel.First_name,
                     Last_name = newUserViewModel.Last_name,
@@ -40,6 +43,7 @@ namespace form_submission.Controllers
             }
             else
             {
+                // ModelState will bind asp-for-validation values to the model defined in the razor file
                 return View("Index", newUserViewModel);
             }
         }
