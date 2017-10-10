@@ -16,6 +16,8 @@ namespace login_registration.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            // can you think of a way to do this w/o using viewbag?
+            // perhaps have a model class for RegViewModel and LoginViewModel references?
             RegisterViewModel userModel = new RegisterViewModel();
             ViewBag.LoginObj = new LoginViewModel();
             return View(userModel);
