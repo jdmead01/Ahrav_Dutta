@@ -1,0 +1,39 @@
+@using login_registration.Models
+@model login_registration.Models.RegisterViewModel
+@Html.Partial("Login", (LoginViewModel)ViewBag.LoginObj)
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="Register">
+    <h1>Registration</h1>
+    <form asp-controller="User" asp-action="Register" method="post">
+        <span asp-validation-for="first_name"></span>
+        <br>
+        <label asp-for="first_name">First Name:</label>
+        <input asp-for="first_name">
+        <br>
+        <span asp-validation-for="last_name"></span>
+        <br>
+        <label asp-for="last_name">Last Name:</label>
+        <input asp-for="last_name">
+        <br>
+        <span asp-validation-for="email"></span>
+        <br>
+        <label asp-for="email">Email:</label>
+        <input asp-for="email">
+        <br>
+        <span asp-validation-for="password"></span>
+        <br>
+        <label asp-for="password">Password:</label>
+        <input asp-for="password">
+        <br>
+        <span asp-validation-for="password_confirm"></span>
+        <br>
+        <label asp-for="password_confirm">Confirm Password:</label>
+        <input asp-for="password_confirm">
+        <br>
+        <input type="submit" class="button-primary" value="Register">
+    </form>
+</div>
+

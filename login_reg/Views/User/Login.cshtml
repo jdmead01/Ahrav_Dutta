@@ -1,0 +1,18 @@
+@model login_registration.Models.LoginViewModel
+
+<div class="Login">
+    <h1>Login</h1>
+    <form asp-action="Login" asp-controller="User" method="post">
+            <span asp-validation-for="loginEmail"></span>
+            <br>
+            <label asp-for="loginEmail">Email:</label>
+            <input asp-for="loginEmail">
+            <br>
+            <span asp-validation-for="loginPassword"></span>
+            <br>
+            <label asp-for="loginPassword">Password:</label>
+            <input asp-for="loginPassword">
+            <br>
+            <input type="submit" class="button-primary" value="Login">
+    </form>
+</div>

@@ -1,0 +1,8 @@
+{
+  "name": "login_reg",
+  "private": true,
+  "dependencies": {
+    "bootstrap" : "3.3.6"
+    
+  }
+}

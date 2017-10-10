@@ -1,0 +1,10 @@
+@{
+    ViewData["Title"] = "Success Page";
+}
+<h1>Successfully registered</h1>
+@{
+    foreach(var user in ViewBag.AllUsers)
+    {
+        <p>Name: @user["First_name"] @user["Last_name"] Age: @user["Age"] Created at: @user["Created_at"]</p>
+    }
+}

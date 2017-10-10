@@ -1,0 +1,33 @@
+@model login_registration.Models.Comment
+@{
+    ViewData["Title"] = "Dashboard Page";
+}
+@{
+    foreach(var message in ViewBag.allMessages)
+    {
+        <p>@message["user_first"] @message["user_last"] - @message["message_create"]</p>
+        <div class="message">
+            <p>@message["user_message"]</p>
+        </div>
+        <div class="comment">
+        @foreach(var comment in ViewBag.allComments)
+        {
+            if(@comment["comment_message_id"] == @message["message_id"])
+            {
+                <p>@comment["comment_first"] @comment["comment_last"]</p>
+                <p>@comment["comment_comment"]</p>
+            }
+        }
+        </div>
+        <h3>Post a comment</h3>
+        <form class="form" asp-controller="Wall" asp-route-messageID=@message["message_id"] asp-action="CreateComment" method="post">
+                <span asp-validation-for="comment"></span>
+                <br>
+                <textarea asp-for="comment"></textarea>
+                <br>
+                <input type="submit" value="Add comment">
+        </form>
+        
+        
+    }
+}

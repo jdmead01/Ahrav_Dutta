@@ -1,0 +1,28 @@
+@model form_submission.Models.UserViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Enter your information</h2>
+<form asp-controller="Users" asp-action="SubmitInfo" method="post">
+    <span asp-validation-for="First_name"></span>
+    <label asp-for="First_name"></label>
+    <input asp-for="First_name">
+    <br>
+    <span asp-validation-for="Last_name"></span>
+    <label asp-for="Last_name"></label>
+    <input asp-for="Last_name">
+    <br>
+    <span asp-validation-for="Age"></span>
+    <label asp-for="Age"></label>
+    <input asp-for="Age">
+    <br>
+    <span asp-validation-for="Email"></span>
+    <label asp-for="Email"></label>
+    <input asp-for="Email">
+    <br>
+    <span asp-validation-for="Password"></span>
+    <label asp-for="Password"></label>
+    <input asp-for="Password">
+    <br>
+    <input type="submit" value="Submit">
+</form>

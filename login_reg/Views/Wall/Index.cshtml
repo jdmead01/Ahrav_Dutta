@@ -1,0 +1,16 @@
+@using login_registration.Models
+@model login_registration.Models.Message
+@{
+    ViewData["Title"] = "Dashboard Page";
+}
+
+<h1>The Wall</h1>
+<h3>Post a message</h3>
+<form class="form" asp-controller="Wall" asp-action="CreateMessage" method="post">
+        <span asp-validation-for="message"></span>
+        <br>
+        <textarea asp-for="message"></textarea>
+        <br>
+        <input type="submit" class="button-primary" value="Post Message">
+</form>
+@Html.Partial("Comment", (Comment)ViewBag.CommentObj)
