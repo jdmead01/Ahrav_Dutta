@@ -1,0 +1,8 @@
+{
+  "name": "lost_in_woods",
+  "private": true,
+  "dependencies": {
+    "bootstrap" : "3.3.6"
+    
+  }
+}
