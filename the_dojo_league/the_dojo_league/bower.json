@@ -1,0 +1,8 @@
+{
+  "name": "the_dojo_league",
+  "private": true,
+  "dependencies": {
+    "bootstrap" : "3.3.6"
+    
+  }
+}

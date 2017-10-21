@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model the_dojo_league.Models.Ninja
+<div class="left">
+    <h1>Registered Ninjas</h1>
+    <table class="table-condensed">
+        <tr>
+            <td><h4>Ninja Name</h4></td>
+            <td><h4>Home Dojo</h4></td>
+        </tr>
+        @foreach(var ninja in ViewBag.allNinjas)
+        {
+            <tr>
+                <td><a href="/Ninjas/@ninja.id">@ninja.name</a></td>
+                <td><a href="/Dojos/@ninja.dojo.id">@ninja.dojo.name</a></td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="right">
+    <h1>Register A Ninja</h1>
+    <form asp-action="RegisterNinja" asp-controller="DojoLeague" method="post">
+        <span asp-validation-for="name"></span>
+        <label asp-for="name"></label>
+        <input asp-for="name">
+        <br>
+        <span asp-validation-for="level"></span>
+        <label asp-for="level"></label>
+        <input asp-for="level">
+        <br>
+        <span asp-validation-for="dojo"></span>
+        <label asp-for="dojo"></label>
+        <select asp-for="dojo">
+            <option value="Rogue">Rogue</option>
+            @foreach (var dojo in ViewBag.allDojos)
+            {
+                <option value="@dojo.name">@dojo.name</option>
+            }
+        </select>
+        <br>
+        <span asp-validation-for="description"></span>
+        <label asp-for="description"></label>
+        <textarea asp-for="description"></textarea>
+        <br>
+        <input type="submit" value="Add">
+    </form>
+</div>
