@@ -98,6 +98,7 @@ namespace bank_accounts.Controllers
             int current_balance = _context.Users.Where(u => u.UserId == user_id).Select(u => u.Balance).SingleOrDefault();
             if(transaction_amount < 0 && Math.Abs(transaction_amount) > current_balance)
             {
+                // Could you use modelstate to do this?
                 ViewBag.Error = null;
                 TempData["error"] = "Can not withdraw that amount, withdrawal amount must be less than or equal to current balance";
                 return Redirect ($"/Dashboard/{user.UserId}");
