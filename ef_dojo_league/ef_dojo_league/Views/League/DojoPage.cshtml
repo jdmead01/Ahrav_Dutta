@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model ef_dojo_league.Models.RegisterDojo
+<h1>All Dojos</h1>
+<table class="table-condensed">
+    <tr>
+        <td><h4>Dojo Name</h4></td>
+    </tr>
+    @foreach (var dojo in ViewBag.AllDojos)
+    {
+        @if(dojo.Id != 2)
+        {
+            <tr>
+                <td><a href="/Dojo/@dojo.Id">@dojo.Name</a></td>
+            </tr>
+        }
+    }
+</table>
+<form asp-action="RegisterDojo" asp-controller="League" method="post">
+        <span asp-validation-for="Name"></span>
+        <br>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        <br>
+        <span asp-validation-for="Location"></span>
+        <br>
+        <label asp-for="Location"></label>
+        <input asp-for="Location">
+        <br>
+        <span asp-validation-for="Information"></span>
+        <br>
+        <label asp-for="Information"></label>
+        <br>
+        <textarea asp-for="Information" cols="30" rows="5"></textarea>
+        <br>
+        <input type="submit" value="Add">
+</form>
+<a href="/Ninjas"><button>Home</button></a>

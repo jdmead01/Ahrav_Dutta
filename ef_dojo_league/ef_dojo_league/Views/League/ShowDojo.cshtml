@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using ef_dojo_league.Models
+@model ef_dojo_league.Models.Dojo
+<h1>@Model.Name !!</h1>
+<h4>Dojo Location - @Model.Location</h4>
+<h4>Information - @Model.Information</h4>
+<h2>Current Members</h2>
+<table class="table-condensed">
+    <tr>
+        <td>Ninja</td>
+        <td>Action</td>
+    </tr>
+    @foreach(var ninja in Model.Ninjas)
+    {
+        <tr>
+            <td>@ninja.Name</td>
+            <td><a href="/remove/@ninja.Id/@Model.Id">Banish</a></td>
+        </tr>
+    }
+</table>
+<h2>Rogue Ninjas</h2>
+<table class="table-condensed">
+    <tr>
+        <td>Ninja</td>
+        <td>Action</td>
+    </tr>
+    @foreach (var ninja in ViewBag.RogueNinjas)
+    {
+        <tr>
+            <td>@ninja.Name</td>
+            <td><a href="/recruit/@ninja.Id/@Model.Id">Recruit</a></td>
+        </tr>
+    }
+</table>
+<a href="/Ninjas"><button>Home</button></a>

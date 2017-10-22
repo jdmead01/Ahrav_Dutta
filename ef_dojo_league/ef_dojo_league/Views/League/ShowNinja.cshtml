@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using ef_dojo_league.Models
+@model ef_dojo_league.Models.Ninja
+<h1>Name: @Model.Name</h1>
+<h4>Ninja Level - @Model.Level</h4>
+<h4>Description: @Model.Description</h4>
+@if(Model.DojoId != 2)
+{
+    <h4>Current Dojo: <a href="/Dojo/@ViewBag.Dojo.Id">@ViewBag.Dojo.Name</a></h4>
+}
+else
+{
+    <h4>No Current Dojo, Rogue Ninja</h4>
+}
+<a href="/Ninjas"><button>Home</button></a>

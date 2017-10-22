@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using ef_dojo_league.Models
+@model ef_dojo_league.Models.RegisterNinja
+<h1>Registered Ninjas</h1>
+<table class="table-condensed">
+    <tr>
+        <td>Ninja Name</td>
+        <td>Home Dojo</td>
+    </tr>
+    @foreach (var ninja in ViewBag.AllNinjas)
+    {
+    <tr>
+        <td><a href="/Ninja/@ninja.Id">@ninja.Name</a></td>
+        @if(ninja.DojoId == 2)
+        {
+            <td>Rogue</td>
+        }
+        else
+        {
+            <td><a href="/Dojo/@ninja.Dojo.Id">@ninja.Dojo.Name</a></td>
+        }
+    </tr>
+    }
+</table>
+<form asp-action="RegisterNinja" asp-controller="League" method="post">
+    <span asp-validation-for="Name"></span>
+    <br>
+    <label asp-for="Name"></label>
+    <input asp-for="Name">
+    <br>
+    <span asp-validation-for="Level"></span>
+    <br>
+    <label asp-for="Level"></label>
+    <input asp-for="Level">
+    <br>
+    <span asp-validation-for="DojoId"></span>
+    <br>
+    <label asp-for="DojoId"></label>
+    <select asp-for="DojoId">
+        @foreach (var dojo in ViewBag.AllDojos)
+        {
+        <option value="@dojo.Id">@dojo.Name</option>
+        }
+    </select>
+    <br>
+    <span asp-validation-for="Description"></span>
+    <br>
+    <label asp-for="Description"></label>
+    <br>
+    <textarea asp-for="Description" cols="30" rows="5"></textarea>
+    <br>
+    <input type="submit" value="Add">
+</form>
