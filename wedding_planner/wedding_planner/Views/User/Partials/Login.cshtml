@@ -1,0 +1,13 @@
+@model wedding_planner.Models.LoginUser
+<h2>Login</h2>
+<form asp-action="LoginUser" asp-controller="User" method="post">
+    <label asp-for="Email"></label>
+    <input asp-for="Email">
+    <br>
+    <span asp-validation-for="Password"></span>
+    <br>
+    <label asp-for="Password"></label>
+    <input asp-for="Password"> 
+    <br>
+    <input type="submit" class="button-primary" value="Submit">
+</form>

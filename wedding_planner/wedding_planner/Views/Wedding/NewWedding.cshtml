@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "New Wedding Page";
+}
+@model wedding_planner.Models.NewWedding
+<h1>Plan Your Wedding</h1>
+<a href="Logout">Log Out</a>
+<form asp-action="AddWedding" asp-controller="Wedding" method="post">
+    <span asp-validation-for="Groom"></span>
+    <label asp-for="Groom"></label>
+    <input asp-for="Groom">
+    <br>
+    <span asp-validation-for="Bride"></span>
+    <label asp-for="Bride"></label>
+    <input asp-for="Bride">
+    <br>
+    <span asp-validation-for="Date"></span>
+    <label asp-for="Date"></label>
+    <input type="date" asp-for="Date">
+    <br>
+    <span asp-validation-for="Address"></span>
+    <label asp-for="Address"></label>
+    <input asp-for="Address">
+    <br>
+    <input type="submit" class="button-primary" value="Submit">
+</form>

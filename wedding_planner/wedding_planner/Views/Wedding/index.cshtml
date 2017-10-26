@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model wedding_planner.Models.DashboardModels
+@using wedding_planner.Models
+@using System.Linq
+<h2>Welcome to the Wedding Planner</h2>
+<a href="Logout">Log Out</a>
+<table class="table-condensed">
+        <thead>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            @foreach (var wedding in Model.allWeddings)
+            {
+                <tr>
+                <td><a href="Wedding/@wedding.WeddingId">@wedding.Groom and @wedding.Bride</a></td>
+                <td>@wedding.Date.ToString("MMM dd, yyyy")</td>
+                <td>@wedding.Guests.Count</td>
+                @if(Model.User.UserId == wedding.UserId)
+                {
+                    <td><a href="Delete/@wedding.WeddingId">Delete</a></td>
+                }
+                else
+                {
+                        if(wedding.Guests.Where(g => g.UserId == Model.User.UserId).Count() == 0)
+                        {
+                            <td><a href="RSVP/@wedding.WeddingId">RSVP</a></td>
+                        }
+                        else
+                        {
+                            <td><a href="Decline/@wedding.WeddingId">Un-RSVP</a></td>
+                        }
+                }
+                </tr>
+            }
+        </tbody>            
+    </table>
+ <div class="button">  
+<a href="NewWedding"><button class="btn btn-primary">New Wedding</button></a>
+</div> 
+<div id="main">
+<div class="col-xs-6">
+<table class="table-condensed wedding">
+    <tr>
+        <h4>Joined Weddings</h4>
+    </tr>
+    @{
+    foreach(var wedding in Model.JoinedWeddings){
+        <tr>
+            <td>@wedding.Groom  @wedding.Bride wedding<td>
+        </tr>
+    }  
+}
+</table>
+</div>
+<div class="col-xs-6">
+<table class="table-condensed">
+        <tr>
+            <h4>Not Joined Weddings</h4>
+        </tr>
+        @{
+        foreach(var nowedding in Model.NotJoinedWeddings){
+            <tr>
+                <td>@nowedding.Groom  @nowedding.Bride wedding<td>
+            </tr>
+        }  
+    }
+    </table>
+</div>
+</div>

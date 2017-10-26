@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Wedding Info Page";
+}
+@model wedding_planner.Models.Wedding
+<h1>@Model.Groom and @Model.Bride Wedding</h1> 
+<a href="Logout">Log Out</a>
+<h3>Date: @Model.Date.ToString("MMM dd, yyyy")</h3>
+<h3>Guests:</h3>
+@foreach (var guest in Model.Guests)
+{
+    <ul>
+        <li>@guest.InvitedUser.FirstName @guest.InvitedUser.LastName</li>
+    </ul>
+}
