@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace wedding_planner.Migrations
 {
-    public partial class firstmigrationever : Migration
+    public partial class firstone : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,7 @@ namespace wedding_planner.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invite",
+                name: "Invites",
                 columns: table => new
                 {
                     InviteId = table.Column<int>(nullable: false)
@@ -63,15 +63,15 @@ namespace wedding_planner.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invite", x => x.InviteId);
+                    table.PrimaryKey("PK_Invites", x => x.InviteId);
                     table.ForeignKey(
-                        name: "FK_Invite_Users_UserId",
+                        name: "FK_Invites_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Invite_Weddings_WeddingId",
+                        name: "FK_Invites_Weddings_WeddingId",
                         column: x => x.WeddingId,
                         principalTable: "Weddings",
                         principalColumn: "WeddingId",
@@ -79,13 +79,13 @@ namespace wedding_planner.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invite_UserId",
-                table: "Invite",
+                name: "IX_Invites_UserId",
+                table: "Invites",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invite_WeddingId",
-                table: "Invite",
+                name: "IX_Invites_WeddingId",
+                table: "Invites",
                 column: "WeddingId");
 
             migrationBuilder.CreateIndex(
@@ -97,7 +97,7 @@ namespace wedding_planner.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Invite");
+                name: "Invites");
 
             migrationBuilder.DropTable(
                 name: "Weddings");

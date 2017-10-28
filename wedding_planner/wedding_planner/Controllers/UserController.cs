@@ -55,14 +55,14 @@ namespace wedding_planner.Controllers
         public IActionResult LoginUser(LoginUser returningUser)
         {
             PasswordHasher<LoginUser> hasher = new PasswordHasher<LoginUser>();
-            User loginUser = _context.Users.Where(user => user.Email == returningUser.Email).SingleOrDefault();
+            User loginUser = _context.Users.Where(user => user.Email == returningUser.LogEmail).SingleOrDefault();
             if(loginUser == null)
             {
-                ModelState.AddModelError("Email", "Invalid Email/Passowrd");
+                ModelState.AddModelError("LogEmail", "Invalid Email/Passowrd");
             }
-            else if(hasher.VerifyHashedPassword(returningUser,loginUser.Password, returningUser.Password) == 0)
+            else if(hasher.VerifyHashedPassword(returningUser,loginUser.Password, returningUser.LogPassword) == 0)
             {
-                ModelState.AddModelError("Email", "Invalid Email/Passowrd");
+                ModelState.AddModelError("LogEmail", "Invalid Email/Passowrd");
             }
             if(!ModelState.IsValid)
             {

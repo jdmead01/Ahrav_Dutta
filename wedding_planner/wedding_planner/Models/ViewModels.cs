@@ -16,7 +16,7 @@ namespace wedding_planner.Models
         [RegularExpression("^[a-zA-Z ]*$")]
         [Display(Name = "Last Name")]
         public string LastName {get; set;}
-        [Required(ErrorMessage="Email name is required")]
+        [Required(ErrorMessage="Email is required")]
         [EmailAddress]
         [Display(Name = "Email Address")]
         public string Email {get; set;}
@@ -32,15 +32,15 @@ namespace wedding_planner.Models
     }
     public class LoginUser
     {
-        [Required(ErrorMessage="Email name is required")]
+        [Required(ErrorMessage="Email is required")]
         [EmailAddress]
         [Display(Name = "Email Address")]
-        public string Email {get; set;}
+        public string LogEmail {get; set;}
         [Required(ErrorMessage="Password is required")]
         [MinLength(8, ErrorMessage="Password must be 8 characters long")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string Password {get; set;}
+        public string LogPassword {get; set;}
     }
     public class NewWedding
     {
